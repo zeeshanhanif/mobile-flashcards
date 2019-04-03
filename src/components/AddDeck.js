@@ -7,21 +7,21 @@ export default class AddDeck extends React.Component {
         return (
             
                 <Container style={styles.container}>
-                <KeyboardAvoidingView behavior="padding">
-                    <Text style={[styles.selfAlign,styles.text1]}>What is the title of your new deck?</Text>
-                    <Form style={{alignSelf:"stretch"}}>
-                        <Item rounded>
-                            <Input placeholder='Deck Title dd'/>
-                        </Item>
-                    </Form>
-                    
-                    <View style={{flex:1, flexDirection:"row",  alignSelf:"stretch", justifyContent:"center"}} full>
-                        <Button style={[styles.btn]} >
-                            <Text>
-                                Create Deck d
-                            </Text>
-                        </Button>
-                    </View>
+                    <KeyboardAvoidingView behavior="padding">
+                        <Text style={[styles.selfAlign,styles.text1]}>What is the title of your new deck?</Text>
+                        <Form style={{alignSelf:"stretch"}}>
+                            <Item rounded>
+                                <Input placeholder='Deck Title dd'/>
+                            </Item>
+                        </Form>
+                        
+                        <View style={{flex:1, flexDirection:"row",  alignSelf:"stretch", justifyContent:"center"}} full>
+                            <Button style={[styles.btn]} >
+                                <Text>
+                                    Create Deck d
+                                </Text>
+                            </Button>
+                        </View>
                     </KeyboardAvoidingView>
                 </Container>
             

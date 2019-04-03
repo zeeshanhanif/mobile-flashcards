@@ -9,15 +9,22 @@ import AddCard from "./AddCard";
 import Quiz from "./Quiz";
 
 const Stack = createStackNavigator({
+    AddCard: {
+        screen: AddCard,
+        navigationOptions: {
+            title: "Add Card",
+        }
+    },
     Main: {
         screen: TabNavigator,
     },
     Deck: {
         screen: Deck,
+        navigationOptions: {
+            title: "Deck 1",
+        }
     },
-    AddCard: {
-        screen: AddCard,
-    },
+    
     Quiz: {
         screen: Quiz,
     },
