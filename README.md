@@ -16,9 +16,9 @@ Tested on Android Platform
 
 
 ## Screen Shots
-![Splash Screen](screenshots/splashscreen.jpg?raw=true)
-![Home Screen](screenshots/home.jpg?raw=true)
-![Add Deck Screen](screenshots/addDeck.jpg?raw=true)
-![Add Card Screen](screenshots/addCard.jpg?raw=true)
-![Quiz Screen](screenshots/quiz.jpg?raw=true)
-![Quiz Completed Screen](screenshots/quizcompleted.jpg?raw=true)
+![Splash Screen](screenshots/splashscreen.jpg?raw=true =250x)
+![Home Screen](screenshots/home.jpg?raw=true =250x)
+![Add Deck Screen](screenshots/addDeck.jpg?raw=true =400x)
+![Add Card Screen](screenshots/addCard.jpg?raw=true =500x)
+![Quiz Screen](screenshots/quiz.jpg?raw=true =300x)
+![Quiz Completed Screen](screenshots/quizcompleted.jpg?raw=true =250x)
