@@ -13,3 +13,7 @@ npm start
 ## Tested Platform
 
 Tested on Android Platform
+
+
+## Screen Shots
+![Splash Screen](screenshots/splashscreen.jpg?raw=true "Title")
