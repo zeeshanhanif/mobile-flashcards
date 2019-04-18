@@ -157,7 +157,7 @@ class Quiz extends React.Component {
             <Container style={styles.noQuizcontainer}>                
                 <View>
                     <Text style={{fontSize:20, alignSelf:"center"}}>Quiz Completed</Text>
-                    <Text style={{fontSize:20, alignSelf:"center"}}>You have answered {(this.state.correctCount/this.props.deck.questions.length)*100}% correct</Text>
+                    <Text style={{fontSize:20, alignSelf:"center"}}>You have answered { Math.round((this.state.correctCount/this.props.deck.questions.length)*100)}% correct</Text>
                     <Button block rounded style={styles.btnQuizEnded} onPress={()=> this.restartQuiz() }>
                         <Text>Restart Quiz</Text>
                     </Button>
