@@ -1,4 +1,4 @@
-import { GET_ALL_DECKS, ADD_DECK, ADD_CARD_TO_DECK, DELETE_DECK, RESET_NEW_DECK_ID  } from '../actions/decks';
+import { ADD_DECK, RESET_NEW_DECK_ID  } from '../actions/decks';
 
 
 export default function newDeckId (state = {}, action) {

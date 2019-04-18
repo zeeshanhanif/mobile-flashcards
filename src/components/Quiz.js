@@ -230,6 +230,4 @@ const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: colors.darkButtonColor
     }
-    
-    
 })

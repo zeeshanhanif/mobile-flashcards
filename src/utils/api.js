@@ -33,12 +33,10 @@ function initialData(){
 }
 
 export async function getDecks(){
-    //AsyncStorage.clear();
     try {
         const results = await AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY);
         if(results){
             const data = JSON.parse(results);
-            //console.log("data on load >> ",data);
             return data;
         }
         else {
@@ -65,8 +63,6 @@ export async function saveDeckTitle(title){
             [id] : deck
         }
     ))
-    console.log("testesetset");
-    console.log(deck);
     return deck;
 }
 
@@ -76,7 +72,6 @@ export async function saveCardToDeck(deckId, card){
         const data = JSON.parse(results);
         const deck = data[deckId];
         deck.questions = deck.questions.concat([card]);
-        
         await AsyncStorage.mergeItem(FLASHCARDS_STORAGE_KEY, JSON.stringify(
             {
                 [deckId] : deck
@@ -90,10 +85,9 @@ export async function removeDeck(deckId){
     const results = await AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY);
     if(results){
         const data = JSON.parse(results);
-        const deck = data[deckId];
         delete data[deckId];
         
-        const updated = await AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY,JSON.stringify(data))
+        await AsyncStorage.setItem(FLASHCARDS_STORAGE_KEY,JSON.stringify(data))
         return data;
     }
     return {};

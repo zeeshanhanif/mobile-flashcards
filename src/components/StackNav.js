@@ -13,7 +13,6 @@ const Stack = createStackNavigator({
         screen: Deck,
         
     },
-    
     AddCard: {
         screen: AddCard,
         navigationOptions: {

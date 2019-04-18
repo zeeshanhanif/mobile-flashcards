@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
-import { Container, Header, Content, Button, Text, Spinner } from 'native-base';
+import { Container, Spinner } from 'native-base';
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import Main from "./src/components/Main";
@@ -34,7 +33,6 @@ export default class App extends React.Component {
             return  (
                 <Container>
                     <Spinner color='blue' />
-
                 </Container>
             )      
         }
@@ -42,16 +40,7 @@ export default class App extends React.Component {
             <Provider store={store}>
                 <Main />
             </Provider>
-            
         );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

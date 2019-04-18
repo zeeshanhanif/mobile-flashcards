@@ -49,7 +49,7 @@ export function setLocalNotification(){
                             Notifications.cancelAllScheduledNotificationsAsync();
 
                             let tomorrow = new Date();
-                            tomorrow.setDate(tomorrow.getDate() +1 );
+                            tomorrow.setDate(tomorrow.getDate() + 1);
                             tomorrow.setHours(11);
                             tomorrow.setMinutes(0);
 
@@ -60,7 +60,6 @@ export function setLocalNotification(){
                                     repeat: 'day',
                                 }
                             )
-
                             AsyncStorage.setItem(NOTIFICATION_KEY,JSON.stringify(true));
                         }
                     })
