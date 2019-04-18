@@ -16,4 +16,9 @@ Tested on Android Platform
 
 
 ## Screen Shots
-![Splash Screen](screenshots/splashscreen.jpg?raw=true "Title")
+![Splash Screen](screenshots/splashscreen.jpg?raw=true)
+![Home Screen](screenshots/home.jpg?raw=true)
+![Add Deck Screen](screenshots/addDeck.jpg?raw=true)
+![Add Card Screen](screenshots/addCard.jpg?raw=true)
+![Quiz Screen](screenshots/quiz.jpg?raw=true)
+![Quiz Completed Screen](screenshots/quizcompleted.jpg?raw=true)
