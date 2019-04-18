@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, Header, Content, Button, Text, Spinner } from 'native-base';
+import { Container, Button, Text } from 'native-base';
 import { connect } from "react-redux";
 import { handleDeleteDeck  } from "../store/actions/decks";
+import { colors } from "../utils/helper";
 
 class Deck extends React.Component {
     
@@ -13,7 +14,7 @@ class Deck extends React.Component {
             title: title,
             headerTintColor:"white",
             headerStyle: {
-                backgroundColor:"#0080FF"
+                backgroundColor:colors.headerColor
             }
         }
     } 
@@ -49,10 +50,10 @@ class Deck extends React.Component {
                     <Text style={styles.deckTitle}>{deck.title}</Text>
                     <Text style={styles.deckCardCount}>{deck.questions.length} cards</Text>
                     <Button style={styles.btn} onPress={()=> this.onAddCardPress(deck.id) } bordered block >
-                        <Text>Add Card</Text>
+                        <Text style={{color: colors.darkTextColor}}>Add Card</Text>
                     </Button>
-                    <Button style={styles.btn} onPress={()=> this.onStartQuizPress(deck.id) } block >
-                        <Text>Start Quiz</Text>
+                    <Button style={[styles.btn, {backgroundColor: colors.darkButtonColor}]} onPress={()=> this.onStartQuizPress(deck.id) } block >
+                        <Text >Start Quiz</Text>
                     </Button>
                     <Button style={styles.btn} onPress={()=> this.onDeleteDeckPress(deck.id) } transparent danger block >
                         <Text>Delete Deck</Text>
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:"lightblue"
+        backgroundColor:colors.allScreensBackgroundColor,
     },
     deckTitle: {
         fontSize: 35,

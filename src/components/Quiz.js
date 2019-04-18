@@ -1,9 +1,9 @@
 import React from 'react';
-import { StatusBar, StyleSheet, Animated, TouchableOpacity, Dimensions } from 'react-native';
-import { Container, Header, Content, Button, Text, Spinner, View } from 'native-base';
+import { StyleSheet, Animated, Dimensions } from 'react-native';
+import { Container, Button, Text, View } from 'native-base';
 import { connect } from "react-redux";
 import { handleDeleteDeck  } from "../store/actions/decks";
-import { clearLocalNotification, setLocalNotification } from "../utils/helper";
+import { clearLocalNotification, setLocalNotification, colors } from "../utils/helper";
 
 class Quiz extends React.Component {
 
@@ -110,14 +110,14 @@ class Quiz extends React.Component {
                 { rotateY: this.backInterpolate }
             ]
         }
-        const { questionIndex, correctCount } = this.state
+        const { questionIndex } = this.state
         return (
             <Container style={styles.container}>                
-                <View>
+                <View style={{marginBottom: 20}}>
                     <Text style={styles.questionCounterText}>{questionIndex+1}/{questions.length}</Text>
                 </View>
                 <View style={{flex:1}} >
-                    <Animated.View rounded style={[frontAnimatedStyle, styles.questionView, {opacity:this.frontOpacity,borderRadius:30}]}>
+                    <Animated.View style={[frontAnimatedStyle, styles.questionView, {opacity:this.frontOpacity,borderRadius:30}]}>
                         <Text style={styles.questionText}>{questions[questionIndex].question}</Text>    
                     </Animated.View>
                     <Animated.View style={[backAnimatedStyle, styles.questionView,styles.backView, {opacity:this.backOpacity,borderRadius:30}]}>
@@ -126,7 +126,7 @@ class Quiz extends React.Component {
                 </View>
                 <View>
                     <Button style={styles.btn} onPress={()=> this.flipCard() } transparent danger block >
-                        <Text style={{fontSize:20, alignSelf:"flex-end"}}>{this.state.flipButtonText}</Text>
+                        <Text style={{fontSize:20, alignSelf:"flex-end", color: colors.darkTextColor}}>{this.state.flipButtonText}</Text>
                     </Button>
                 </View>
                 <View style={{flex:1}}>
@@ -146,7 +146,7 @@ class Quiz extends React.Component {
         return (
             <Container style={styles.noQuizcontainer}>                
                 <View >
-                    <Text style={{fontSize:20, alignSelf:"center", marginLeft:20, marginRight:20}}>Sorry, you cannot take a quiz because there are no cards in the deck.</Text>
+                    <Text style={{fontSize:20, alignSelf:"center", marginLeft:20, marginRight:20, color:colors.darkTextColor}}>Sorry, you cannot take a quiz because there are no cards in the deck.</Text>
                 </View>
             </Container>
         );
@@ -158,10 +158,10 @@ class Quiz extends React.Component {
                 <View>
                     <Text style={{fontSize:20, alignSelf:"center"}}>Quiz Completed</Text>
                     <Text style={{fontSize:20, alignSelf:"center"}}>You have answered {(this.state.correctCount/this.props.deck.questions.length)*100}% correct</Text>
-                    <Button block rounded style={styles.btnAnswer} onPress={()=> this.restartQuiz() } danger>
+                    <Button block rounded style={styles.btnQuizEnded} onPress={()=> this.restartQuiz() }>
                         <Text>Restart Quiz</Text>
                     </Button>
-                    <Button block rounded style={styles.btnAnswer} onPress={()=> this.props.navigation.goBack() } danger>
+                    <Button block rounded style={styles.btnQuizEnded} onPress={()=> this.props.navigation.goBack() }>
                         <Text>Back to Deck</Text>
                     </Button>
                 </View>
@@ -191,25 +191,23 @@ export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor:"lightblue"
+        backgroundColor:colors.allScreensBackgroundColor,
     },
     noQuizcontainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor:"lightblue"
+        backgroundColor:colors.allScreensBackgroundColor,
     },
     questionView: {
         width: Dimensions.get("window").width-20,
         height: 300,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#F8F8FF',
+        backgroundColor:colors.quizCardColor,
         backfaceVisibility: 'hidden',
         marginLeft:10
-        
     },
     backView: {
-        //backgroundColor:"red",
         position: "absolute",
         top: 0
     },
@@ -221,14 +219,16 @@ const styles = StyleSheet.create({
         marginLeft:20
     },
     questionText : {
-        fontSize: 25,
-        
+        fontSize: 25,    
         marginLeft: 10,
         marginRight:10,
-        //backgroundColor:"green"
     },
     btn: {
-        marginTop: 20
+        marginTop: 50,
+    },
+    btnQuizEnded: {
+        margin: 20,
+        backgroundColor: colors.darkButtonColor
     }
     
     

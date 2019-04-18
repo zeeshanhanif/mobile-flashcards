@@ -1,12 +1,9 @@
-import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Home from './Home';
-import AddDeck from './AddDeck';
-import Details from './Details';
 import TabNavigator from './TabNav';
 import Deck from "./Deck";
 import AddCard from "./AddCard";
 import Quiz from "./Quiz";
+import { colors } from "../utils/helper";
 
 const Stack = createStackNavigator({
     Main: {
@@ -23,7 +20,7 @@ const Stack = createStackNavigator({
             title: "Add Card",
             headerTintColor:"white",
             headerStyle: {
-                backgroundColor:"#0080FF"
+                backgroundColor:colors.headerColor
             }
         }
     },
@@ -33,7 +30,7 @@ const Stack = createStackNavigator({
             title: "Quiz",
             headerTintColor:"white",
             headerStyle: {
-                backgroundColor:"#0080FF"
+                backgroundColor:colors.headerColor
             }
         }
     }

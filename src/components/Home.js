@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, ActivityIndicator, TouchableOpacity } from 'react-native';
-import { Container, Header, Content, Button, Text, Spinner, Card, CardItem,Body, Left, Right } from 'native-base';
-import { getDecks } from "../utils/api";
+import {TouchableOpacity } from 'react-native';
+import { Container, Content, Text, Card, CardItem,Body } from 'native-base';
 import { connect } from "react-redux";
+import { colors } from "../utils/helper";
 
 class Home extends React.Component {
 
@@ -26,15 +26,15 @@ class Home extends React.Component {
         return (
             <Container>
 
-                <Content style={{backgroundColor:"lightblue"}} padder >
+                <Content style={{backgroundColor:colors.homeBackgroundColor}} padder >
                     {
                         decks && Object.keys(decks).map((id)=> (
                             <TouchableOpacity key={id} onPress={() => this.onDeckCardPress(decks[id])}>
                                 <Card bordered >
-                                    <CardItem header style={{justifyContent:"center"}} >
+                                    <CardItem header style={{justifyContent:"center",backgroundColor:colors.homeCardBackgroundColor}} >
                                             <Text>{decks[id].title}</Text>
                                     </CardItem>
-                                    <CardItem >
+                                    <CardItem style={{backgroundColor:colors.homeCardBackgroundColor}}>
                                         <Body style={{alignItems:"center"}}>
                                             <Text>
                                                 {decks[id].questions.length} cards

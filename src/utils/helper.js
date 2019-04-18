@@ -12,6 +12,16 @@ export function clearLocalNotification(){
         .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
+export const colors = {
+    homeBackgroundColor: "#FFCA28",
+    homeCardBackgroundColor: "#FFF8E1",
+    allScreensBackgroundColor:"#FFF8E1",
+    headerColor:"#FF6F00",
+    darkButtonColor: "#ffc107",
+    darkTextColor:"#FF6F00",
+    quizCardColor:"#ffe082"
+}
+
 function createNotification(){
     return {
         title: "Attempt one quiz today",

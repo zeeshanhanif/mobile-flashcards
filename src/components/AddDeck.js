@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, ActivityIndicator , KeyboardAvoidingView} from 'react-native';
-import { Container, Header, Content, Button, Text, Spinner, H2, Body,Item, Input, Form } from 'native-base';
-import { saveDeckTitle } from "../utils/api";
+import { StyleSheet, View, KeyboardAvoidingView} from 'react-native';
+import { Container, Button, Text, Item, Input, Form } from 'native-base';
 import { connect } from "react-redux";
 import { handleAddDecks, resetNewDeckId  } from "../store/actions/decks";
+import { colors } from "../utils/helper";
 
 class AddDeck extends React.Component {
 
@@ -11,9 +11,7 @@ class AddDeck extends React.Component {
         deckTitle:''
     };
     onAddCreateDeckPress() {
-        this.props.addDeck(this.state.deckTitle)
-        //this.setState({deckTitle:''});
-        //this.props.navigation.goBack();
+        this.props.addDeck(this.state.deckTitle);        
     }
 
     handleChange = name => value => {
@@ -32,10 +30,8 @@ class AddDeck extends React.Component {
     }
 
     render() {
-        return (
-            
+        return (            
                 <Container style={styles.container}>
-
                     <KeyboardAvoidingView behavior="padding">
                         <Text style={[styles.selfAlign,styles.text1]}>What is the title of your new deck?</Text>
                         <Form style={{alignSelf:"stretch"}}>
@@ -54,13 +50,12 @@ class AddDeck extends React.Component {
                             </Button>
                         </View>
                     </KeyboardAvoidingView>
-                </Container>
-            
+                </Container>            
         );
     }
 }
 
-function mapStateToProps({decks,newDeckId}) {
+function mapStateToProps({newDeckId}) {
     return {
         newDeckId : newDeckId.newDeckId
     }
@@ -88,13 +83,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginTop:30,
         marginBottom:30,
+        color:colors.darkTextColor,
     },  
     btn : {
         alignSelf:"center",
+        backgroundColor: colors.darkButtonColor
     },
     container: {
         flex:1,
-        backgroundColor: 'lightblue',
+        backgroundColor:colors.allScreensBackgroundColor,
         alignItems: 'center',
         justifyContent: 'center',
     },

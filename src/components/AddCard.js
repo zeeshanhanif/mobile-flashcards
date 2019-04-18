@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, ActivityIndicator , KeyboardAvoidingView} from 'react-native';
-import { Container, Header, Content, Button, Text, Spinner, H2, Body,Item, Input, Form } from 'native-base';
+import { StyleSheet} from 'react-native';
+import { Container, Button, Text, Item, Input, Form } from 'native-base';
 import { connect } from "react-redux";
 import { handleAddCardToDeck  } from "../store/actions/decks";
+import { colors } from "../utils/helper";
 
 class AddCard extends React.Component {
     
@@ -12,8 +13,7 @@ class AddCard extends React.Component {
         this.props.addCardToDeck(deckId, {
             question,
             answer
-        })
-        //this.props.navigation.navigate("Deck");
+        });
         this.props.navigation.goBack();
     }
 
@@ -21,17 +21,13 @@ class AddCard extends React.Component {
         question:'',
         answer:''
     };
-    /*
-    onAddCreateDeckPress() {
-        this.props.addDeck(this.state.deckTitle)
-    }
-*/
+
     handleChange = name => value => {
         this.setState({ [name]: value });
     };
     
     render() {
-        //alert(this.props.navigation.state.params.deckId);
+        
         return (
             <Container style={styles.container}>     
                 
@@ -69,7 +65,7 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         alignItems: 'center',
-        backgroundColor:"lightblue"
+        backgroundColor:colors.allScreensBackgroundColor
     },
     cardInputField :{
         marginTop:30,
@@ -78,6 +74,7 @@ const styles = StyleSheet.create({
         backgroundColor:"white"
     },
     btn: {
-        margin: 30
+        margin: 30,
+        backgroundColor: colors.darkButtonColor
     },
 })

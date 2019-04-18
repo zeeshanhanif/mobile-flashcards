@@ -1,5 +1,4 @@
-import React from 'react';
-import { createMaterialTopTabNavigator, createAppContainer } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation';
 import Home from './Home';
 import AddDeck from './AddDeck';
 
@@ -8,6 +7,12 @@ const TabNavigator = createMaterialTopTabNavigator({
         screen: Home,
         navigationOptions: {
             tabBarLabel: "Decks"
+        },
+        tabBarOptions : {
+            activeTintColor: 'green',
+            style: {
+                backgroundColor: 'red',
+            },
         }
     },
     AddDeck: {
