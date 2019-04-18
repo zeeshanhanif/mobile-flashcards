@@ -1,55 +1,83 @@
 import React from 'react';
 import { StyleSheet, View, ActivityIndicator , KeyboardAvoidingView} from 'react-native';
 import { Container, Header, Content, Button, Text, Spinner, H2, Body,Item, Input, Form } from 'native-base';
+import { connect } from "react-redux";
+import { handleAddCardToDeck  } from "../store/actions/decks";
 
-export default class AddCard extends React.Component {
+class AddCard extends React.Component {
     
     onAddCardPress() {
-        this.props.navigation.navigate("AddCard");
+        const { deckId } = this.props.navigation.state.params;
+        const { question, answer } = this.state;
+        this.props.addCardToDeck(deckId, {
+            question,
+            answer
+        })
+        //this.props.navigation.navigate("Deck");
+        this.props.navigation.goBack();
     }
 
-    onStartQuizPress() {
-        this.props.navigation.navigate("Quiz");
+    state = {
+        question:'',
+        answer:''
+    };
+    /*
+    onAddCreateDeckPress() {
+        this.props.addDeck(this.state.deckTitle)
     }
+*/
+    handleChange = name => value => {
+        this.setState({ [name]: value });
+    };
     
     render() {
+        //alert(this.props.navigation.state.params.deckId);
         return (
             <Container style={styles.container}>     
-                <KeyboardAvoidingView behavior="padding">
-                    
+                
                     <Form style={{alignSelf:"stretch"}}>
-                        <Item rounded>
-                            <Input placeholder='Question'/>
+                        <Item style={styles.cardInputField} rounded>
+                            <Input placeholder='Question'
+                                onChangeText={this.handleChange('question')} />
                         </Item>
-                        <Item rounded>
-                            <Input placeholder='Answer'/>
+
+                        <Item style={styles.cardInputField} rounded>
+                            <Input placeholder='Answer' 
+                                onChangeText={this.handleChange('answer')}/>
                         </Item>
                     </Form>
-                    <Button style={styles.btn} onPress={()=> this.onStartQuizPress() } block >
+                    <Button style={styles.btn} onPress={()=> this.onAddCardPress() } block >
                         <Text>Submit</Text>
                     </Button>
-                </KeyboardAvoidingView>
+                
             </Container>
         );
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        addCardToDeck: (deckId, card) => {
+            dispatch(handleAddCardToDeck(deckId, card));
+        }
+    };
+}
+
+export default connect(null, mapDispatchToProps)(AddCard);
+
 const styles = StyleSheet.create({
     container: {
-        backgroundColor:"red",
+        flex:1,
         alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor:"lightblue"
     },
-    deckTitle: {
-        fontSize: 35,
-        fontWeight:"bold",
-        marginBottom: 40
-    },
-    deckCardCount: {
-        fontSize: 30,
-        marginBottom: 40
+    cardInputField :{
+        marginTop:30,
+        marginLeft:20,
+        marginRight:20,
+        backgroundColor:"white"
     },
     btn: {
-        margin: 20
+        margin: 30
     },
 })

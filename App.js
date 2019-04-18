@@ -4,7 +4,9 @@ import { Container, Header, Content, Button, Text, Spinner } from 'native-base';
 import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import Main from "./src/components/Main";
-import { createStackNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
+import store from './src/store';
+import { setLocalNotification } from './src/utils/helper';
 
 export default class App extends React.Component {
 
@@ -23,16 +25,24 @@ export default class App extends React.Component {
         })
     }
 
+    componentDidMount(){
+        setLocalNotification();
+    }
+
     render() {
         if(!this.state.isAppReady){
             return  (
                 <Container>
                     <Spinner color='blue' />
+
                 </Container>
             )      
         }
         return (
-            <Main />
+            <Provider store={store}>
+                <Main />
+            </Provider>
+            
         );
     }
 }

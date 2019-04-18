@@ -4,8 +4,16 @@ import { Container, Header, Content, Button, Text, Spinner } from 'native-base';
 import Stack from "./StackNav";
 import Tab from "./TabNav";
 import { Constants } from "expo";
+import { getDecks } from "../utils/api";
+import { connect } from "react-redux";
+import { handleGetAllDecks  } from "../store/actions/decks";
 
-export default class Main extends React.Component {
+class Main extends React.Component {
+
+    componentDidMount() {
+        this.props.initilizeData();
+    }
+
     render() {
         return (
             <Container>
@@ -18,6 +26,16 @@ export default class Main extends React.Component {
         );
     }
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        initilizeData: () => {
+            dispatch(handleGetAllDecks());
+        }
+    };
+}
+//export default Main;
+export default connect(null, mapDispatchToProps)(Main);
 
 const styles = StyleSheet.create({
     container: {

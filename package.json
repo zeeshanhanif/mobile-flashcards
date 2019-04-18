@@ -11,7 +11,11 @@
     "native-base": "^2.12.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-navigation": "^3.5.1"
+    "react-navigation": "^3.5.1",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

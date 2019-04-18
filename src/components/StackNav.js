@@ -9,33 +9,32 @@ import AddCard from "./AddCard";
 import Quiz from "./Quiz";
 
 const Stack = createStackNavigator({
+    Main: {
+        screen: TabNavigator,
+    },  
+    Deck: {
+        screen: Deck,
+        
+    },
+    
     AddCard: {
         screen: AddCard,
         navigationOptions: {
             title: "Add Card",
+            headerTintColor:"white",
+            headerStyle: {
+                backgroundColor:"#0080FF"
+            }
         }
     },
-    Main: {
-        screen: TabNavigator,
-    },
-    Deck: {
-        screen: Deck,
-        navigationOptions: {
-            title: "Deck 1",
-        }
-    },
-    
     Quiz: {
         screen: Quiz,
-    },
-    Details: {
-        screen: Details,
         navigationOptions: {
-            title: "See Details test",
+            title: "Quiz",
+            headerTintColor:"white",
             headerStyle: {
-                backgroundColor: '#f4511e',
-            },
-            headerTintColor: '#fff',
+                backgroundColor:"#0080FF"
+            }
         }
     }
 })

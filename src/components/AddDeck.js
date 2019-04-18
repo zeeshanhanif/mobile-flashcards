@@ -1,24 +1,55 @@
 import React from 'react';
 import { StyleSheet, View, ActivityIndicator , KeyboardAvoidingView} from 'react-native';
 import { Container, Header, Content, Button, Text, Spinner, H2, Body,Item, Input, Form } from 'native-base';
+import { saveDeckTitle } from "../utils/api";
+import { connect } from "react-redux";
+import { handleAddDecks, resetNewDeckId  } from "../store/actions/decks";
 
-export default class AddDeck extends React.Component {
+class AddDeck extends React.Component {
+
+    state = {
+        deckTitle:''
+    };
+    onAddCreateDeckPress() {
+        this.props.addDeck(this.state.deckTitle)
+        //this.setState({deckTitle:''});
+        //this.props.navigation.goBack();
+    }
+
+    handleChange = name => value => {
+        this.setState({ [name]: value });
+    };
+
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps.newDeckId)
+        if(nextProps.newDeckId !== this.props.newDeckId){
+            this.props.navigation.navigate("Deck", {
+                deckId : nextProps.newDeckId,
+                title : this.state.deckTitle
+            })
+            this.setState({deckTitle:''});
+        }
+    }
+
     render() {
         return (
             
                 <Container style={styles.container}>
+
                     <KeyboardAvoidingView behavior="padding">
                         <Text style={[styles.selfAlign,styles.text1]}>What is the title of your new deck?</Text>
                         <Form style={{alignSelf:"stretch"}}>
-                            <Item rounded>
-                                <Input placeholder='Deck Title dd'/>
+                            <Item style={{backgroundColor:"white"}} rounded>
+                                <Input  placeholder='Deck Title' 
+                                    value={this.state.deckTitle}
+                                    onChangeText={this.handleChange('deckTitle')} />
                             </Item>
                         </Form>
                         
                         <View style={{flex:1, flexDirection:"row",  alignSelf:"stretch", justifyContent:"center"}} full>
-                            <Button style={[styles.btn]} >
+                            <Button style={[styles.btn]} onPress={()=> this.onAddCreateDeckPress() }>
                                 <Text>
-                                    Create Deck d
+                                    Create Deck
                                 </Text>
                             </Button>
                         </View>
@@ -28,6 +59,25 @@ export default class AddDeck extends React.Component {
         );
     }
 }
+
+function mapStateToProps({decks,newDeckId}) {
+    return {
+        newDeckId : newDeckId.newDeckId
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addDeck: (deckTitle) => {
+            dispatch(handleAddDecks(deckTitle));
+        },
+        resetNewDeckId: ()=> {
+            dispatch(resetNewDeckId());
+        }
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddDeck);
 
 const styles = StyleSheet.create({
     selfAlign : {
@@ -44,7 +94,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex:1,
-        //backgroundColor: 'green',
+        backgroundColor: 'lightblue',
         alignItems: 'center',
         justifyContent: 'center',
     },
