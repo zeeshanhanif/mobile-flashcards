@@ -9,3 +9,7 @@ Run following commands in project home folder
 npm install
 
 npm start
+
+## Tested Platform
+
+Tested on Android Platform
