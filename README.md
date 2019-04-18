@@ -22,3 +22,5 @@ Tested on Android Platform
 ![Add Card Screen](screenshots/addCard.jpg)
 ![Quiz Screen](screenshots/quiz.jpg)
 ![Quiz Completed Screen](screenshots/quizcompleted.jpg)
+
+<img src="screenshots/quizcompleted.jpg"  width="250">
