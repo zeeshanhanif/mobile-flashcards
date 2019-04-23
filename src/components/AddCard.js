@@ -10,6 +10,9 @@ class AddCard extends React.Component {
     onAddCardPress() {
         const { deckId } = this.props.navigation.state.params;
         const { question, answer } = this.state;
+        if(!question || !answer) {
+            return alert("Please Enter all the fields")
+        }
         this.props.addCardToDeck(deckId, {
             question,
             answer

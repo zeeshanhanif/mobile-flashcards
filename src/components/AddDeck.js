@@ -11,6 +11,9 @@ class AddDeck extends React.Component {
         deckTitle:''
     };
     onAddCreateDeckPress() {
+        if(!this.state.deckTitle) {
+            return alert("Please Enter Deck title")
+        }
         this.props.addDeck(this.state.deckTitle);        
     }
 
@@ -19,7 +22,6 @@ class AddDeck extends React.Component {
     };
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps.newDeckId)
         if(nextProps.newDeckId !== this.props.newDeckId){
             this.props.navigation.navigate("Deck", {
                 deckId : nextProps.newDeckId,
